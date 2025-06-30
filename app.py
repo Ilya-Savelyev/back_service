@@ -1,4 +1,4 @@
-from flask import Flask, requests, jsonify
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -31,7 +31,7 @@ class Postcard(db.Model):
 #Создание\отправка открытки
 @app.route('/postcards', method=['POST'])
 def create_postcard():
-    data = requests.json
+    data = request.json
     try:
         new_postcard = Postcard(
             sender_name = data['sender_name'],
